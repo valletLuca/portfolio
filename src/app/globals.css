@@ -60,7 +60,7 @@ body {
 .ember-glow {
   text-shadow:
     0 0 18px var(--color-glow),
-    0 0 48px var(--color-glow);
+    0 0 45px var(--color-glow);
 }
 
 /* ─── Séparateur enluminé ─── */
