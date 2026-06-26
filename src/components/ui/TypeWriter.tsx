@@ -49,7 +49,10 @@ export function TypeWriter({
   }, [text, speed, startDelay, reduceMotion]);
 
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
+      {/* Texte complet réel pour lecteurs d'écran / agents — pas d'aria-label
+          sur un span générique (interdit par la spec ARIA). */}
+      <span className="sr-only">{text}</span>
       <span aria-hidden="true">{text.slice(0, count)}</span>
       {showCaret && (
         <span aria-hidden="true" className="animate-caret-blink">

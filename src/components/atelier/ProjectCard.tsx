@@ -1,7 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Github, Plus } from "lucide-react";
+
+/** Tailles affichées : 1 colonne en mobile, 2 en md, 3 en lg (~362px). */
+const CARD_IMAGE_SIZES = "(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 362px";
 import { pick, useLang } from "@/lib/i18n";
 import { ui } from "@/data/ui";
 import type { Project } from "@/data/projects";
@@ -60,21 +64,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.image ? (
             project.imageFit === "contain" ? (
               <div className="absolute inset-0" style={motifStyle(project.motif)}>
-                <img
+                <Image
                   src={project.image}
                   alt={`${pick(ui.atelier.preview, lang)} : ${title}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-contain p-5"
+                  fill
+                  sizes={CARD_IMAGE_SIZES}
+                  className="object-contain p-5"
                 />
               </div>
             ) : (
-              <img
+              <Image
                 src={project.image}
                 alt={`${pick(ui.atelier.preview, lang)} : ${title}`}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes={CARD_IMAGE_SIZES}
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             )
           ) : (

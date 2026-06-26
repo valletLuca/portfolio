@@ -20,6 +20,12 @@
     "resend": "^6.14.0",
     "three": "^0.178.0"
   },
+  "browserslist": [
+    "chrome >= 92",
+    "edge >= 92",
+    "firefox >= 92",
+    "safari >= 15.4"
+  ],
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
