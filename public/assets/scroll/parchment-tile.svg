@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240">
+  <defs>
+    <!-- Fond parchemin avec variations subtiles -->
+    <linearGradient id="parch" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F3BE63"/>
+      <stop offset="18%" stop-color="#FECE79"/>
+      <stop offset="50%" stop-color="#FFD68C"/>
+      <stop offset="82%" stop-color="#FECE79"/>
+      <stop offset="100%" stop-color="#F3BE63"/>
+    </linearGradient>
+
+    <!-- Taches/vieillissement très léger, répétable verticalement -->
+    <radialGradient id="stain1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E6A341" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#E6A341" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="stain2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B14A36" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#B14A36" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Motif losange pour les bordures (répété) -->
+    <pattern id="diamonds" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#8C0902"/>
+      <path d="M20 6 L34 20 L20 34 L6 20 Z" fill="none" stroke="#E6A341" stroke-width="2.5"/>
+      <circle cx="20" cy="20" r="3" fill="#FECE79"/>
+    </pattern>
+
+    <!-- Ombrage des bords latéraux (courbure du parchemin) -->
+    <linearGradient id="edgeL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#210100" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#210100" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edgeR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#210100" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#210100" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fond (limité à la largeur du parchemin des rouleaux : 70 → 1130) -->
+  <clipPath id="parchClip"><rect x="70" y="0" width="1060" height="240"/></clipPath>
+  <g clip-path="url(#parchClip)">
+  <rect x="0" y="0" width="1200" height="240" fill="url(#parch)"/>
+
+  <!-- Vieillissement subtil — positions symétriques verticalement (y=0 et y=240 identiques pour tiling) -->
+  <ellipse cx="300" cy="120" rx="180" ry="90" fill="url(#stain1)"/>
+  <ellipse cx="880" cy="60" rx="140" ry="70" fill="url(#stain2)"/>
+  <ellipse cx="880" cy="300" rx="140" ry="70" fill="url(#stain2)"/>
+  <ellipse cx="880" cy="-180" rx="140" ry="70" fill="url(#stain2)"/>
+  <ellipse cx="600" cy="200" rx="200" ry="60" fill="url(#stain1)" opacity="0.5"/>
+  <ellipse cx="600" cy="-40" rx="200" ry="60" fill="url(#stain1)" opacity="0.5"/>
+
+  <!-- Fibres horizontales très discrètes (régulières pour tiling parfait) -->
+  <g stroke="#210100" stroke-width="0.6" opacity="0.05">
+    <line x1="0" y1="30" x2="1200" y2="30"/>
+    <line x1="0" y1="78" x2="1200" y2="78"/>
+    <line x1="0" y1="126" x2="1200" y2="126"/>
+    <line x1="0" y1="174" x2="1200" y2="174"/>
+    <line x1="0" y1="222" x2="1200" y2="222"/>
+  </g>
+
+  <!-- Bordures latérales à motif losange -->
+  <rect x="70" y="0" width="40" height="240" fill="url(#diamonds)"/>
+  <rect x="1090" y="0" width="40" height="240" fill="url(#diamonds)"/>
+  <!-- Liserés dorés encadrant les bordures -->
+  <rect x="67" y="0" width="3" height="240" fill="#E6A341"/>
+  <rect x="110" y="0" width="3" height="240" fill="#E6A341"/>
+  <rect x="1087" y="0" width="3" height="240" fill="#E6A341"/>
+  <rect x="1130" y="0" width="3" height="240" fill="#E6A341"/>
+
+  <!-- Ombres latérales de courbure -->
+  <rect x="70" y="0" width="90" height="240" fill="url(#edgeL)"/>
+  <rect x="1040" y="0" width="90" height="240" fill="url(#edgeR)"/>
+  </g>
+</svg>

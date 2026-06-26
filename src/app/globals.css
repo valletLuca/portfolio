@@ -1,0 +1,113 @@
+@import "../styles/palette.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* ─── Scrollbar grimoire ─── */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+  border: 2px solid var(--color-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* ─── Focus clavier visible partout ─── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Texture parchemin (grain SVG, teinté par la palette via blend) ─── */
+.texture-grain {
+  position: relative;
+}
+.texture-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* ─── Lueur de braise pour le titre ─── */
+.ember-glow {
+  text-shadow:
+    0 0 18px var(--color-glow),
+    0 0 48px var(--color-glow);
+}
+
+/* ─── Séparateur enluminé ─── */
+.ornament-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent) 20%,
+    var(--color-primary) 50%,
+    var(--color-accent) 80%,
+    transparent
+  );
+  height: 1px;
+}
+
+/* ─── Poinçons des cartes projets (façon ticket perforé) ───
+   La couleur de fond doit être celle de la SECTION derrière la carte
+   (surface-alt dans l'Atelier), pas celle de la carte : c'est ce qu'on
+   verrait à travers le trou. L'ombre interne décalée simule la profondeur. */
+.punch-hole {
+  background-color: var(--color-surface-alt);
+}
+
+/* ─── Feuille de parchemin des Archives ───
+   Tuile SVG (1200×240) répétée verticalement. Le motif utile occupe
+   x = 70 → 1130 du viewBox : on agrandit le fond à 1200/1060 ≈ 113.21 %
+   centré pour rogner les bandes transparentes latérales, si bien que les
+   liserés dorés de la tuile tombent exactement sur les bords de la feuille. */
+.parchment-sheet {
+  background-image: url("/assets/scroll/parchment-tile.svg");
+  background-size: 113.21% auto;
+  background-position: top center;
+  background-repeat: repeat-y;
+  box-shadow: 0 12px 44px var(--shadow-soft);
+  border-radius: 4px;
+}
+
+/* ─── Reduced motion : on coupe tout ─── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

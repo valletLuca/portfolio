@@ -1,0 +1,39 @@
+/* ════════════════════════════════════════════════════════════════
+   PALETTE — change les 5 hex ci-dessous, tout le site suit.
+   Aucune couleur en dur ailleurs dans le projet.
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Palette principale — Parchemin & Sang ─── */
+  --color-surface: #fece79; /* Parchemin doré, fond clair principal */
+  --color-accent: #e6a341; /* Or ancien, accents et ornements */
+  --color-primary: #b14a36; /* Rouge brique, CTA, liens, highlights */
+  --color-deep: #210100; /* Encre noire, texte, headers, fonds sombres */
+  --color-blood: #8c0902; /* Sang séché, glow, hover, accents dramatiques */
+
+  /* ─── Dérivées automatiques ─── */
+  --color-surface-alt: color-mix(in srgb, var(--color-surface) 85%, var(--color-accent));
+  --color-text: var(--color-deep);
+  --color-text-muted: color-mix(in srgb, var(--color-deep) 60%, transparent);
+  --color-border: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  --color-glow: color-mix(in srgb, var(--color-blood) 40%, transparent);
+
+  /* ─── Nuances supplémentaires (toujours via color-mix) ─── */
+  --color-accent-soft: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --color-primary-soft: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  --color-deep-warm: color-mix(in srgb, var(--color-deep) 95%, var(--color-accent));
+  --color-on-deep: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  --color-on-deep-muted: color-mix(in srgb, var(--color-surface) 55%, transparent);
+  --shadow-soft: color-mix(in srgb, var(--color-deep) 12%, transparent);
+  --shadow-strong: color-mix(in srgb, var(--color-deep) 28%, transparent);
+  --shadow-punch: color-mix(in srgb, var(--color-deep) 30%, transparent);
+
+  /* ─── Bois des rouleaux de parchemin (Archives) ─── */
+  --color-wood: color-mix(in srgb, var(--color-deep) 62%, var(--color-accent));
+  --color-wood-light: color-mix(in srgb, var(--color-deep) 38%, var(--color-accent));
+  --color-wood-dark: color-mix(in srgb, var(--color-deep) 80%, var(--color-accent));
+
+  /* ─── Particules Three.js ─── */
+  --color-particles-1: var(--color-accent);
+  --color-particles-2: var(--color-blood);
+}
