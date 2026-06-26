@@ -43,7 +43,14 @@ export function LandingSection() {
       id="titre"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-deep"
     >
-      {mounted && !reduceMotion && (
+      {/* Repli CSS toujours présent : sert de fond sur mobile (pas de Three.js)
+          et de lueur ambiante derrière le canvas alpha sur desktop. */}
+      <div className="hero-ember-static absolute inset-0" aria-hidden="true" />
+
+      {/* Le canvas Three.js ne se monte que sur les appareils à pointeur fin
+          (desktop). Sur tactile il n'y a pas de curseur : on évite ainsi tout
+          le coût de parsing/exécution du bundle Three.js. */}
+      {mounted && !reduceMotion && interactive && (
         <div className="absolute inset-0" aria-hidden="true">
           <ParticlesCursor burstSignal={burstSignal} interactive={interactive} />
         </div>

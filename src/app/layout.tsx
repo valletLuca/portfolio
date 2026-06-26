@@ -4,19 +4,27 @@ import { ThemeProvider } from "next-themes";
 import { LangProvider } from "@/lib/i18n";
 import "./globals.css";
 
+// Cinzel : seuls 600/700/900 sont utilisés (le 400 n'apparaît nulle part).
+// C'est la police du titre hero (LCP) → on la précharge.
 const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["600", "700", "900"],
+  display: "swap",
   variable: "--font-display",
 });
 
+// Geist (corps de texte) : absent du hero (above the fold = Cinzel + mono).
+// preload désactivé pour le sortir de la chaîne critique du LCP.
 const geist = Geist({
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
   variable: "--font-body",
 });
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-mono",
 });
 

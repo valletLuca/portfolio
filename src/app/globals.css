@@ -56,6 +56,18 @@ body {
   mix-blend-mode: multiply;
 }
 
+/* ─── Repli mobile du champ de particules (pas de Three.js sur tactile) ───
+   Reproduit en CSS pur la lueur ambiante or/braise du canvas, sans coût JS. */
+.hero-ember-static {
+  background:
+    radial-gradient(55% 45% at 50% 40%, var(--color-glow), transparent 70%),
+    radial-gradient(
+      40% 38% at 78% 72%,
+      color-mix(in srgb, var(--color-accent) 22%, transparent),
+      transparent 75%
+    );
+}
+
 /* ─── Lueur de braise pour le titre ─── */
 .ember-glow {
   text-shadow:
